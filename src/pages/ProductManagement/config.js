@@ -1,0 +1,46 @@
+export function getTableGroup () {
+  return [
+    {
+      label:'投保人',
+      value:'insureds',
+      tableColums:[
+        {
+          prop:'name',
+          label:'姓名',
+          align:'center',
+        },
+         {
+          prop:'mobile',
+          label:'手机号',
+          align:'center',
+        },
+         {
+          prop:'age',
+          label:'年龄',
+          align:'center',
+        },
+      ],
+    },
+    {
+      label:'保单计划',
+      value:'orderBen',
+      tableColums:[
+        {
+          prop:'address',
+          label:'地址',
+          align:'center',
+        },
+         {
+          prop:'email',
+          label:'邮箱',
+          align:'center',
+        },
+         {
+          prop:'sex',
+          label:'性别',
+          align:'center',
+        },
+      ]
+    }
+  ];
+}
