@@ -2,7 +2,7 @@
  * @Author: dafengxiang
  * @Date: 2021-03-25 16:35:45
  * @LastEditTime: 2021-03-26 08:33:20
- * @LastEditors: dafengxiang
+ * @LastEditors: suxunna
  * @Description: 入口文件
  */
 import { createApp } from 'vue'
@@ -16,6 +16,8 @@ import 'normalize.css'
 //引入element组件库
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
+import locale from 'element-plus/lib/locale/lang/zh-cn';
+
 
 //引入路由文件
 import router from "./router";
@@ -23,7 +25,7 @@ import router from "./router";
 
 const appObj = createApp(App)
   .use(router)
-  .use(ElementPlus)
+  .use(ElementPlus,{locale})
   .mount('#app')
 
 export default appObj

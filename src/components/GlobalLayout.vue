@@ -11,7 +11,7 @@
       <el-row>
         <el-col :span="12" class="logo-box">
           <img src="../assets/logo.png" alt="加载失败" />
-          运营平台 {{ name }}
+          C2C运营管理平台 {{ name }}
         </el-col>
         <el-col :span="12" class="info-box">
           <el-space :size="25">

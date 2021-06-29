@@ -12,25 +12,21 @@
       :xs="{ span: 18, pull:3}"
       :lg="{ span: 7, pull: 2}"
       style="max-width: 400px;">
-      <span class="title">云服务平台登录</span>
-      <span class="gray">Cloud service platform login</span>
+      <span class="title">c2c运营管理平台登录</span>
       <el-form
         ref="ruleForm"
         :model="form"
         :rules="rules"
         style="width: 100%; margin-top: 20px;">
         <el-form-item prop="userCode">
-          <el-input placeholder="请输入工号" v-model.trim="form.userCode"></el-input>
+          <el-input placeholder="请输入帐号" v-model.trim="form.userCode"></el-input>
         </el-form-item>
         <el-form-item prop="userPassword">
           <el-input placeholder="请输入密码" v-model.trim="form.userPassword" show-password/>
         </el-form-item>
          <el-form-item>
           <el-button  type="primary" block size="large" :loading="isLoading" @click="submitForm()">登录</el-button>
-          <div @click="handleShow">修改密码</div>
           <changePwd v-model="isShow"></changePwd>
-          <!-- <btn :value="isValue" @change="handleChange"></btn> -->
-          <btn v-model:value="value"></btn>
         </el-form-item>
       </el-form>
    </el-col>
@@ -40,15 +36,26 @@
 <script>
 import { useRouter } from 'vue-router'
 import changePwd from '../components/changePwd'
-import btn from '../components/btn'
+import { reactive, toRefs } from 'vue'
 export default {
   components:{
-    changePwd,btn
+    changePwd
+  },
+  setup(){
+    const state = reactive({
+      isShow:false,
+      value:1,
+    })
+    const handleChange = (val) =>{
+      state.value = val
+    }
+    return {
+      ...toRefs(state),
+      handleChange
+    }
   },
   data(){
     return {
-      isShow:false,
-      value:1,
       isLoading:false,
       form:{
         userCode:'',
@@ -64,28 +71,6 @@ export default {
       }
     }
   },
-  methods:{
-    handleShow(){
-      this.isShow = !this.isShow
-    },
-    handleUpdate(val){
-      this.isShow = val
-      console.log('12 :>> ', 12);
-    },
-    handleChange(val){
-      this.value = val
-    }
-  },
-  setup(){
-    const router = useRouter()
-    const submitForm = () =>{
-      router.replace({ path: '/' })
-    }
-    //setup函数中定义的变量和方法最后都是需要return出去的不然无法再模板中使用
-    return {
-      submitForm
-    }
-  }
 }
 </script>
 
