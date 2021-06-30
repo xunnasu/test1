@@ -8,9 +8,13 @@
 <template>
   <div :style="{ width: 'auto', display: 'flex', 'flex-direction': 'column' }">
     <el-menu
-      :style="{height: 'calc(100vh - 100px)', overflowY: 'auto', overflowX: 'hidden'}"
+      :style="{
+        height: 'calc(100vh - 100px)',
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }"
       :uniqueOpened="true"
-      :collapse="state.isCollapse"
+      :collapse="isCollapse"
       :router="true"
       default-active="/rolemanagement"
       background-color="#545c64"
@@ -42,14 +46,35 @@
         <template #title>产品管理</template>
       </el-menu-item>
     </el-menu>
-    <div style="text-align: center; background: #303133; padding: 10px; margin-right: 1px;">
-      <el-switch v-model="state.isCollapse" active-color="#666" inactive-color="#ffd04b"></el-switch>
+    <div
+      style="
+        text-align: center;
+        background: #303133;
+        padding: 10px;
+        margin-right: 1px;
+      "
+    >
+      <el-switch
+        v-model="isCollapse"
+        active-color="#666"
+        inactive-color="#ffd04b"
+      ></el-switch>
     </div>
   </div>
 </template>
 
-<script setup>
-import { reactive } from 'vue'
-name: 'PageSider'
-const state = reactive({ isCollapse: false })
+<script>
+import { reactive, toRefs,ref } from "vue";
+// import { useRoute } from 'vue-router'
+
+name: "PageSider";
+export default {
+  setup() {
+      // const route = useRoute()
+    const isCollapse = ref(false)
+    return {
+      isCollapse,
+    };
+  },
+};
 </script>
