@@ -41,6 +41,7 @@
     </el-table-column>
     <slot name="lastColumns"></slot>
   </el-table>
+
   <div class="pagination-box">
     <el-pagination
       @size-change="handleSizeChange"
@@ -54,6 +55,8 @@
     >
     </el-pagination>
   </div>
+    <slot></slot>
+
 </template>
 <script>
 import { reactive, toRefs } from 'vue';

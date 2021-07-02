@@ -23,20 +23,27 @@
           </template>
         </el-table-column>
       </template>
+      <!-- <template #tost> -->
+        <close-service-order v-model:orderStatus="isShow"></close-service-order>
+      <!-- </template> -->
     </c-table>
+    <div @click="handelDD">点的</div>
   </div>
 </template>
 
 <script>
-name: 'RoleManagement';
-import { reactive, toRefs } from 'vue';
-import CTable from '../../components/CTable.vue';
+name: 'RoleManagement'
+import { reactive, toRefs } from 'vue'
+import CTable from '../../components/CTable.vue'
+import CloseServiceOrder from './components/CloseServiceOrder.vue'
 export default {
   components: {
     CTable,
+    CloseServiceOrder,
   },
   setup() {
     const state = reactive({
+      isShow: false,
       pager: {
         totalNum: 24, // 数据总数
         pagesizeNum: 10, // 单页数据量
@@ -92,20 +99,24 @@ export default {
           address: '上海市普陀区金沙江路 1519 弄',
         },
       ],
-    });
+    })
     const handleClick = (data) => {
-      console.log('data :>> ', data);
-    };
+      console.log('data :>> ', data)
+    }
+    const handelDD = () => {
+      state.isShow = !state.isShow
+      console.log('object :>> ', 111)
+    }
     const clickhandleSizeChange = (pagesize) => {
-      state.pager.pagesizeNum = pagesize;
-      this.getNewData();
-    };
+      state.pager.pagesizeNum = pagesize
+      this.getNewData()
+    }
     const getNewData = () => {
       state.tableDataList = state.tableData.slice(
         (state.pager.currentPageNum - 1) * state.pager.pagesizeNum,
         state.pager.currentPageNum * state.pager.pagesizeNum
-      );
-    };
+      )
+    }
     // const clickhandleCurrentChange=(data) =>{
     //    state.pager.pagesizeNum = pagesize
     // },
@@ -114,10 +125,11 @@ export default {
       handleClick,
       clickhandleSizeChange,
       getNewData,
+      handelDD,
       // clickhandleCurrentChange
-    };
+    }
   },
-};
+}
 </script>
 
 <style></style>

@@ -1,5 +1,5 @@
 /*
- * @Author: dafengxiang
+ * @Author: suxunna
  * @Date: 2021-03-25 16:35:45
  * @LastEditTime: 2021-03-26 11:28:59
  * @LastEditors: dafengxiang
@@ -21,7 +21,6 @@ export default defineConfig({
       '/^\/api/': {
         target: 'http://jsonplaceholder.typicode.com',
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '')
       },
     }
   },
