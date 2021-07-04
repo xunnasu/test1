@@ -56,6 +56,7 @@
     </el-pagination>
   </div>
     <slot></slot>
+    <slot></slot>
 
 </template>
 <script>

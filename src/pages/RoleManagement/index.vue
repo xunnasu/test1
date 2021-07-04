@@ -24,18 +24,25 @@
         </el-table-column>
       </template>
       <!-- <template #tost> -->
-        <close-service-order v-model:orderStatus="isShow"></close-service-order>
+
       <!-- </template> -->
     </c-table>
     <div @click="handelDD">点的</div>
+    <el-dialog title="管理" v-model="isShow">
+      <close-service-order
+        v-if="isShow"
+        v-model:orderStatus="orderStatus"
+        @onClose="handleClose"
+      ></close-service-order>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-name: 'RoleManagement'
-import { reactive, toRefs } from 'vue'
-import CTable from '../../components/CTable.vue'
-import CloseServiceOrder from './components/CloseServiceOrder.vue'
+name: 'RoleManagement';
+import { reactive, toRefs } from 'vue';
+import CTable from '../../components/CTable.vue';
+import CloseServiceOrder from './components/CloseServiceOrder.vue';
 export default {
   components: {
     CTable,
@@ -99,24 +106,27 @@ export default {
           address: '上海市普陀区金沙江路 1519 弄',
         },
       ],
-    })
+    });
     const handleClick = (data) => {
-      console.log('data :>> ', data)
-    }
+      console.log('data :>> ', data);
+    };
     const handelDD = () => {
-      state.isShow = !state.isShow
-      console.log('object :>> ', 111)
-    }
+      state.isShow = true;
+      console.log('object :>> ', 111);
+    };
+    const handleClose = (val) => {
+      state.isShow = val;
+    };
     const clickhandleSizeChange = (pagesize) => {
-      state.pager.pagesizeNum = pagesize
-      this.getNewData()
-    }
+      state.pager.pagesizeNum = pagesize;
+      this.getNewData();
+    };
     const getNewData = () => {
       state.tableDataList = state.tableData.slice(
         (state.pager.currentPageNum - 1) * state.pager.pagesizeNum,
         state.pager.currentPageNum * state.pager.pagesizeNum
-      )
-    }
+      );
+    };
     // const clickhandleCurrentChange=(data) =>{
     //    state.pager.pagesizeNum = pagesize
     // },
@@ -126,10 +136,11 @@ export default {
       clickhandleSizeChange,
       getNewData,
       handelDD,
+      handleClose
       // clickhandleCurrentChange
-    }
+    };
   },
-}
+};
 </script>
 
 <style></style>
