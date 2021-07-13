@@ -9,7 +9,7 @@
   <h1>保单管理页面</h1>
 </template>
 
-<script setup>
+<script>
 name: 'PolicyManagement'
 </script>
 

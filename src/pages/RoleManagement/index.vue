@@ -1,8 +1,8 @@
 <!--
  * @Author:苏勋娜
  * @Date: 2021-03-26 08:34:47
- * @LastEditTime: 2021-06-30 10:00:01
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-07-05 10:56:05
+ * @LastEditors: suxunna
  * @Description: 角色管理页面
 -->
 <template>
@@ -28,7 +28,7 @@
       <!-- </template> -->
     </c-table>
     <div @click="handelDD">点的</div>
-    <el-dialog title="管理" v-model="isShow">
+    <el-dialog title="关闭寄卖服务" v-model="isShow">
       <close-service-order
         v-if="isShow"
         v-model:orderStatus="orderStatus"
@@ -43,12 +43,15 @@ name: 'RoleManagement';
 import { reactive, toRefs } from 'vue';
 import CTable from '../../components/CTable.vue';
 import CloseServiceOrder from './components/CloseServiceOrder.vue';
+import configObj from './config'
+
 export default {
   components: {
     CTable,
     CloseServiceOrder,
   },
   setup() {
+    const { columns } = new configObj()
     const state = reactive({
       isShow: false,
       pager: {
@@ -57,11 +60,7 @@ export default {
         currentPageNum: 1, // 当前页码
       },
       tableDataList: [],
-      columns: [
-        { prop: 'date', label: '日期' },
-        { prop: 'name', label: '姓名' },
-        { prop: 'address', label: '地址' },
-      ],
+      columns,
       tableData: [
         {
           id: 1,

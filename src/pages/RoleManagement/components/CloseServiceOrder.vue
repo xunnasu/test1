@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- <el-dialog title="管理" v-model="status"> -->
-      <el-button @click="closed">取 消</el-button>
-    <!-- </el-dialog> -->
+     <el-button @click="closed">取 消</el-button>
   </div>
 </template>
 <script>

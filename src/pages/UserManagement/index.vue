@@ -9,7 +9,7 @@
   <h1>用户管理页面</h1>
 </template>
 
-<script setup>
+<script>
 name: 'UserManagement'
 </script>
 

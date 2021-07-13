@@ -9,7 +9,7 @@
   <h1>渠道管理页面</h1>
 </template>
 
-<script setup>
+<script>
 name: 'ChannelManagement'
 </script>
 
